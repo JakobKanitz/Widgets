@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Interaktiver Fragebogen</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600; /* SemiBold */
+            background-color: transparent; /* Transparenter Hintergrund */
+            color: #e1e1e1; /* Helles Grau für die Schrift */
+            padding: 20px;
+            max-width: 100%;
+            margin: auto;
+        }
+        
+        .question {
+            background: transparent; /* Transparenter Hintergrund für die Fragen */
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .question p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .question ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .question ul li {
+            padding: 10px 15px;
+            border: 2px solid #e8e8e8; /* Heller Rahmen */
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .question ul li:hover {
+            border-color: #2961FF; /* Blauer Rahmen beim Hover */
+            border-width: 4px; /* Dickerer Rahmen beim Hover */
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+        }
+        </style>
+</head>
+<body>
+    <div id="questionnaire">
+        <div class="question">
+            <p>Was beschäftigt dich aktuell am meisten?</p>
+            <ul>
+                <li onclick="nextQuestion('newHeatSolution')">neue Wärmelösung planen</li>
+                <li onclick="nextQuestion('digitalizeHeatNet')">Wärmenetz digitalisieren</li>
+                <li onclick="nextQuestion('establishCustomerInterface')">Kundenschnittstelle errichten</li>
+                <li onclick="nextQuestion('optimizeHeatNet')">Wärmenetz optimieren</li>
+                <li onclick="nextQuestion('transformHeatNet')">Wärmenetz transformieren</li>
+            </ul>
+        </div>
+                <!-- Neue Wärmelösung planen - Folgefragen -->
+                <div class="question" id="newHeatSolution" style="display: none;">
+                    <p>Wie weit bist du damit?</p>
+                    <ul>
+                        <li onclick="nextQuestion('preparation')">Vorbereitung</li>
+                        <li onclick="nextQuestion('implementation')">Umsetzung</li>
+                    </ul>
+                </div>
+        
+                <!-- Vorbereitung - Folgefragen -->
+                <div class="question" id="preparation" style="display: none;">
+                    <p>In welcher Phase befindest du dich?</p>
+                    <ul>
+                        <li onclick="nextQuestion('coordination')">Koordinierung, Beteiligung und Begleitung durch die Gemeinde</li>
+                        <li onclick="nextQuestion('inventoryAnalysis')">Bestandsanalyse</li>
+                        <li>Potenzialanalyse</li>
+                        <li>Zielszenarioentwicklung</li>
+                    </ul>
+                </div>
+        
+                <!-- Umsetzung - Folgefragen -->
+                <div class="question" id="implementation" style="display: none;">
+                    <p>In welcher Phase befindest du dich?</p>
+                    <ul>
+                        <li onclick="nextQuestion('detailPlanning')">Detailplanung>Detailplanung</li>
+                        <li>Monitoring</li>
+                        <li>Evaluierung, Neubewertung und Fortschreibung der KWP</li>
+                    </ul>
+                </div>
+    </div>
+    <script>
+    function nextQuestion(answer) {
+    // Verberge alle Fragen
+    var questions = document.getElementsByClassName('question');
+    for (var i = 0; i < questions.length; i++) {
+        questions[i].style.display = 'none';
+    }
+
+    // Zeige die entsprechende Frage oder führe die Weiterleitung durch
+    switch(answer) {
+        case 'newHeatSolution':
+            document.getElementById('newHeatSolution').style.display = 'block';
+            break;
+        case 'preparation':
+            document.getElementById('preparation').style.display = 'block';
+            break;
+        case 'implementation':
+            document.getElementById('implementation').style.display = 'block';
+            break;
+        case 'coordination':
+            window.location.href = 'https://zentur.io/wegweiser/1';
+            break;
+        case 'detailPlanning':
+            window.location.href = 'https://zentur.io/wegweiser/2';
+            break;
+        case 'inventoryAnalysis':
+            window.location.href = 'https://zentur.io/wegweiser/3';
+            break;
+        // Weitere Fälle für andere Antworten
+    }
+}
+
+    </script>
+</body>
+</html>
