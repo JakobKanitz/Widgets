@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notion API Demo</title>
+</head>
+<body>
+
+<button id="notion-button">In Notion eintragen</button>
+
+<script>
+    document.getElementById('notion-button').addEventListener('click', function() {
+        fetch('https://api.notion.com/v1/pages', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer secret_KSBYQ5cm7CwnIeG3SYARAeXJnMiVzgyKmrFBzZv3jrP',
+                'Content-Type': 'application/json',
+                'Notion-Version': '2021-08-16'
+            },
+            body: JSON.stringify({
+                "parent": { "database_id": "9f38c73830c04be6a7a4dce99717c273" },
+                "properties": {
+                    "Name": {
+                        "title": [
+                            {
+                                "text": {
+                                    "content": "hello world!"
+                                }
+                            }
+                        ]
+                    }
+                }
+            })
+        }).then(response => response.json())
+          .then(data => console.log(data))
+          .catch(error => console.error('Error:', error));
+    });
+</script>
+
+</body>
+</html>
