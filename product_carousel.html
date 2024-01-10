@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Image Carousel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #191919;
+        }
+        .myswiper {
+            max-width: 1200px;
+            width: 100%;
+            padding: 40px 0;   
+        }
+        .container {
+            margin: 0 40px;
+            overflow: hidden;
+        }
+        .swiper-slide {
+            font-size: 18px;
+            width: 600px;
+        }
+        .box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box img{
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .box span {
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            color: #fff;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .swiper-pagination-bullet {
+            background: #fff;
+            width: 9px;
+            height: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper myswiper">
+        <div class="container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="/Kunden_Logos/evr_logo.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="/Kunden_Logos/fernwaerme_Iqoni_logo.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="/Kunden_Logos/leipziger_stadtwerke_logo.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="/Kunden_Logos/evr_logo.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="/Kunden_Logos/fernwaerme_Iqoni_logo.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="/Kunden_Logos/leipziger_stadtwerke_logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        let mySwiper = new Swiper(".container", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            loop: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 1,
+                depth: 100,
+                modifier: 7
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            }
+        });
+    </script>
+
+</body>
+
+</html>
