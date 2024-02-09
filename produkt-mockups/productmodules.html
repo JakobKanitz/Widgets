@@ -10,22 +10,18 @@
             box-sizing: border-box;
         }
 
-        /* Position the image container (needed to position the left and right arrows) */
         .container {
             position: relative;
         }
 
-        /* Hide the images by default */
         .mySlides {
             display: none;
         }
 
-        /* Add a pointer when hovering over the thumbnail images */
         .cursor {
             cursor: pointer;
         }
 
-        /* Next & previous buttons */
         .prev,
         .next {
             cursor: pointer;
@@ -36,28 +32,24 @@
             margin-top: -50px;
             color: white;
             font-weight: bold;
-            font-size: 40px;
+            font-size: 20px; /* Angepasst für eine bessere Darstellung auf Mobilgeräten */
             border-radius: 0 3px 3px 0;
             user-select: none;
-            -webkit-user-select: none;
         }
 
-        /* Position the "next button" to the right */
         .next {
             right: 0;
             border-radius: 3px 0 0 3px;
         }
 
-        /* On hover, add a black background color with a little bit see-through */
         .prev:hover,
         .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        /* Number text (1/3 etc) */
         .numbertext {
             color: #f2f2f2;
-            font-size: 0px;
+            font-size: 12px; /* Angepasst für eine bessere Lesbarkeit */
             padding: 8px 12px;
             position: absolute;
             top: 0;
@@ -68,10 +60,8 @@
             background-color: transparent;
             padding: 2px 16px;
             color: #F7F9FA;
-            height: 150px;
-            /* Feste Höhe */
             font-family: 'Montserrat', sans-serif;
-            /* Schriftart Montserrat */
+            height: auto; /* Automatische Höhenanpassung */
         }
 
         .row:after {
@@ -80,23 +70,19 @@
             clear: both;
         }
 
-        /* Six columns side by side */
         .column {
-            width: 20%;
+            width: 100%; /* Volle Breite in einem festen Einbettungsrahmen */
             margin: auto;
             display: inline-block;
-            /* Hinzugefügt für bessere Kontrolle bei der Zentrierung */
         }
 
-        /* Container for the thumbnails */
         .row {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            /* Ermöglicht den Umbruch von Elementen auf die nächste Zeile */
+            gap: 10px; /* Fügt einen kleinen Abstand zwischen den Elementen hinzu */
         }
 
-        /* Add a transparency effect for thumnbail images */
         .demo {
             opacity: 0.6;
         }
@@ -104,6 +90,18 @@
         .active,
         .demo:hover {
             opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .prev, .next {
+                font-size: 16px; /* Kleinere Schriftgröße für Mobilgeräte */
+            }
+            .numbertext {
+                font-size: 10px; /* Kleinere Schriftgröße für die Nummertexte */
+            }
+            .column {
+                width: 50%; /* Anpassung der Spaltenbreite auf kleineren Bildschirmen */
+            }
         }
     </style>
 </head>
@@ -170,34 +168,32 @@
             </div>
         </div>
         <script>
-            let slideIndex = 1;
-            showSlides(slideIndex);
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-            // Next/previous controls
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
             }
-
-            // Thumbnail image controls
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
             }
-
-            function showSlides(n) {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                let dots = document.getElementsByClassName("demo");
-                if (n > slides.length) { slideIndex = 1 }
-                if (n < 1) { slideIndex = slides.length }
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex - 1].style.display = "block";
-                dots[slideIndex - 1].className += " active";
-            } 
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        } 
         </script>
 </body>
 
