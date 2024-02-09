@@ -11,18 +11,18 @@
         }
         .container {
             position: relative;
-            width: 100%; /* Die Breite des Containers */
-            max-width: 640px; /* Maximale Breite des Containers */
-            margin: auto; /* Zentriert den Container */
+            width: 100%;
+            max-width: 750px;
+            margin: auto;
         }
         .mySlides {
             display: none;
-            width: 100%; /* Stellt sicher, dass die Slides die gleiche Breite haben */
-            height: 480px; /* Feste Höhe für die Slides */
+            width: 100%;
+            height: auto; /* Änderung auf auto, um das Seitenverhältnis der Bilder zu erhalten */
         }
         img {
-            width: 100%; /* Stellt sicher, dass die Bilder die volle Breite einnehmen */
-            height: auto; /* Behält das Seitenverhältnis bei, kann angepasst werden */
+            width: 100%;
+            height: auto;
         }
         .prev, .next {
             cursor: pointer;
@@ -64,8 +64,8 @@
             clear: both;
         }
         .column {
-            width: 25%; /* Anpassung der Spaltenbreite */
-            padding: 0 4px; /* Abstand zwischen den Spalten */
+            width: 25%; /* Angepasst für Desktop-Ansicht */
+            padding: 0 4px;
         }
         .row {
             display: flex;
@@ -74,8 +74,8 @@
         }
         .demo {
             opacity: 0.6;
-            width: 100%; /* Stellt sicher, dass die Thumbnails die volle Breite einnehmen */
-            height: auto; /* Behält das Seitenverhältnis der Thumbnails bei */
+            width: 100%;
+            height: auto;
         }
         .active, .demo:hover {
             opacity: 1;
